@@ -1,0 +1,18 @@
+{
+  "name": "com.kikx.sessions",
+  "title": "Sessions",
+  "author": "luvbyte",
+  "version": "0.1.0",
+  "kikx_version": "0.2.0",
+
+  "include": ["public", "www"],
+
+  "iframe": {
+    "sandbox": ["allow-scripts"]
+  },
+  "system": {
+    "access": ["sessions"]
+  },
+
+  "theme": "transparent"
+}
