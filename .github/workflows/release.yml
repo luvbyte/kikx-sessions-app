@@ -1,0 +1,48 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create app package
+        run: |
+          rm -rf app
+          mkdir app
+
+          cp -r public app/
+          cp -r www app/
+          cp app.json app/
+
+      - name: Read version from app.json
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' app.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP
+        run: |
+          zip -r app.zip app
+
+      - name: Rename to .kikx
+        run: |
+          mv app.zip app.kikx
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          files: app.kikx

@@ -2,10 +2,7 @@
 const kikxApp = new kikxSdk.KikxApp();
 
 const closeSession = async sessionID => {
-  const res = await kikxApp.system.request(
-    "info/session/close/" + sessionID,
-    "POST"
-  );
+  const res = await kikxApp.system.closeSession(sessionID);
 
   if (!res.error) $(`#${sessionID}`).remove();
 };
@@ -48,7 +45,7 @@ const renderInfo = data => {
 $("#loading-screen").hide();
 //
 const fetchInfo = async () => {
-  const info = await kikxApp.system.info();
+  const info = await kikxApp.system.sessionsInfo();
   if (info.data) {
     renderInfo(info.data);
   }

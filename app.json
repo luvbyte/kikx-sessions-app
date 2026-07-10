@@ -1,9 +1,11 @@
 {
   "name": "com.kikx.sessions",
   "title": "Sessions",
+  "category": "Tools",
+  "description": "Kikx sessions manager",
   "author": "luvbyte",
-  "version": "0.1.0",
-  "kikx_version": "0.2.0",
+  "version": "0.1.1",
+  "kikx_version": "0.3.0",
 
   "include": ["public", "www"],
 
@@ -13,6 +15,7 @@
   "system": {
     "access": ["sessions"]
   },
-
+  
+  "sudo": true,
   "theme": "transparent"
 }
