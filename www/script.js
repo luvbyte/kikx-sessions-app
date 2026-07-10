@@ -1,5 +1,5 @@
 //
-const kikxApp = new kikxSdk.KikxApp();
+const kikxApp = kikxSdk.createApp();
 
 const closeSession = async sessionID => {
   const res = await kikxApp.system.closeSession(sessionID);
@@ -42,16 +42,17 @@ const renderInfo = data => {
   });
 };
 
-$("#loading-screen").hide();
-//
-const fetchInfo = async () => {
-  const info = await kikxApp.system.sessionsInfo();
-  if (info.data) {
-    renderInfo(info.data);
-  }
-};
+async function main() {
+  $("#loading-screen").hide();
+  //
+  const fetchInfo = async () => {
+    const info = await kikxApp.system.sessionsInfo();
+    if (info.data) {
+      renderInfo(info.data);
+    }
+  };
 
-$(async () => {
-  // fetch info
   await fetchInfo();
-});
+}
+
+$(main);
