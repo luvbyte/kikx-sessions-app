@@ -16,16 +16,25 @@ const renderInfo = data => {
       <div
         id="${sessionData.id}"
         class="flex items-center justify-between gap-3 p-3 mb-2
-               rounded-lg bg-white/30 
+               rounded-lg bg-white/30
                shadow-sm
                border border-white/20"
       >
         <div class="flex flex-col">
           <span class="font-semibold text-sm text-white">
-            Session ${sessionData.id}
+            ${sessionData.name || `Session ${sessionData.id}`}
           </span>
+
+          <span class="text-xs text-white/70">
+            ID: ${sessionData.id}
+          </span>
+
           <span class="text-xs text-white/70">
             Apps: ${sessionData.apps_count}
+          </span>
+
+          <span class="text-xs text-white/70">
+            Created: ${new Date(sessionData.created_at).toLocaleString()}
           </span>
         </div>
 
