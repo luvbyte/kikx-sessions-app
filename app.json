@@ -4,18 +4,19 @@
   "category": "Tools",
   "description": "Kikx sessions manager",
   "author": "luvbyte",
-  "version": "0.1.3",
-  "kikx_version": "0.3.3",
+  "version": "0.1.4",
+  "kikx_version": "0.4.0",
 
   "include": ["public", "www"],
 
   "iframe": {
     "sandbox": ["allow-scripts"]
   },
+
   "system": {
     "access": ["sessions"]
   },
 
-  "sudo": true,
-  "theme": "transparent"
+  "theme": "transparent",
+  "sudo": true
 }
